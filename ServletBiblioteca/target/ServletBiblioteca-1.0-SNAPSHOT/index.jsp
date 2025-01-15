@@ -10,6 +10,7 @@
 <h2>GESTIÓN DE LIBROS</h2>
 
 <p><a href="verLibros.jsp">Ver todos los libros</a></p>
+<p><a href="buscarLibro.jsp">Buscar un libro</a></p>
 <p><a href="creaLibro.jsp">Crear un libro</a></p>
 <p><a href="actualizaLibro.jsp">Actualizar un libro</a></p>
 <p><a href="eliminaLibro.jsp">Eliminar un libro</a></p>
