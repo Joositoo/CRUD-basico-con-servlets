@@ -16,17 +16,27 @@ public class EliminaLibro extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAO<Libro, Integer> dao = new DAO<>(Libro.class, Integer.class);
+        Libro libro = null;
 
         String isbn = request.getParameter("isbn");
 
         List<Libro> listaLibros = dao.selectAll();
 
-        for (Libro libro : listaLibros) {
-            if (libro.getIsbn().equals(isbn)) {
-                dao.delete(libro);
+        for (Libro l : listaLibros) {
+            if (l.getIsbn().equals(isbn)) {
+                libro = l;
                 break;
             }
         }
-        response.sendRedirect("verLibros.jsp");
+
+        if (libro != null) {
+            dao.delete(libro);
+            response.sendRedirect("verLibros.jsp");
+        }
+        else{
+            request.setAttribute("noExisteLibro", "El libro con ISBN '" + isbn + "' no existe.");
+
+            request.getRequestDispatcher("eliminaLibro.jsp").forward(request, response);
+        }
     }
 }

@@ -10,6 +10,7 @@ import org.example.servletbiblioteca.Modelo.Libro;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @WebServlet(name = "ActualizaLibro", value = "/ActualizaLibro")
 public class ActualizaLibro extends HttpServlet {
@@ -32,11 +33,23 @@ public class ActualizaLibro extends HttpServlet {
         }
 
         if (libro != null) {
+            if (Objects.equals(titulo, "")) {
+                titulo = libro.getTitulo();
+            }
+            if (Objects.equals(autor, "")) {
+                autor = libro.getAutor();
+            }
+
             libro.setTitulo(titulo);
             libro.setAutor(autor);
 
             dao.update(libro);
             response.sendRedirect("verLibros.jsp");
+        }
+        else{
+            request.setAttribute("noExisteLibro", "El libro con ISBN '" + isbn + "' no existe.");
+
+            request.getRequestDispatcher("actualizaLibro.jsp").forward(request, response);
         }
     }
 }

@@ -7,30 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lista de libros</title>
-  <style>
-    h2{
-      text-align:center;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      text-align: center;
-      padding: 8px;
-      border-bottom: 1px solid black;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    td {
-      background-color: #ffffff;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h2>Lista de libros</h2>
